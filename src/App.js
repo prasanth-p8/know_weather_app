@@ -18,11 +18,17 @@ const apiConstants = {
 
 // application is build using functional component
 function App() {
+  // darkTheme track the theme status using boolean value.
   const [darkTheme, setDarkTheme] = useState(false);
+  // date is used to get current date and time.
   const [date, setDate] = useState(new Date());
+  // emptySearch to render initial page until fetching the data.
   const [emptySearch, setEmptySearch] = useState(true);
+  // showError shows error message if user tries to fetch without entering city name
   const [showError, setShowError] = useState(false);
+  // searchInput is used to keep track of user text input
   const [searchInput, setSearchInput] = useState("");
+  // apiStatus keep the status, locationData, and error data of api call
   const [apiStatus, setApiStatus] = useState({
     status: apiConstants.initial,
     locationData: null,
@@ -107,9 +113,13 @@ function App() {
     });
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=48549d1ec6a27f80687f72b92ba7dd76&units=metric`;
 
+    // response from fetched data using open weather api
     const response = await fetch(url);
+
+    // response is connected into responseData using json()
     const responseData = await response.json();
 
+    // response.ok will have "true" on successful request, else "false"
     if (response.ok) {
       onSuccess(responseData);
     } else {
@@ -134,10 +144,12 @@ function App() {
 
   // useEffect Hook is used to calculate current date and time for each second.
   useEffect(() => {
+    // setInterval funciton updates the new date for each 1000 milliseconds.
     const timerId = setInterval(() => {
       setDate(new Date());
     }, 1000);
 
+    // clearInterval funciton will clean up the interval id using timerId variable.
     return () => {
       clearInterval(timerId);
       console.log("removed time");
