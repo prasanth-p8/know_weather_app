@@ -48,8 +48,8 @@ Make sure you have the following installed on your local development machine:
 1. Clone the repository:
 
    ```bash
-   git https://github.com/prasanth-p8/know_weather_app
-   cd know_weather_app-main
+   git clone https://github.com/prasanth-p8/know_weather_app
+   cd know_weather_app
    ```
 
 2. Install dependencies:
